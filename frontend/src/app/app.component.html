@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand logo">eKart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item myitem" *ngIf="loggedIn">
+        <a style="cursor: pointer;" [routerLink]="['/products']" routerLinkActive="active-link" class="nav-link mylink">Products</a>
+      </li>
+
+      <li class="nav-item myitem" *ngIf="loggedIn">
+        <a style="cursor: pointer;" [routerLink]="['/viewCart']" routerLinkActive="active-link" class="nav-link mylink"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Cart</a>
+      </li>
+
+      <li class="nav-item myitem" *ngIf="loggedIn">
+        <a style="cursor: pointer;" [routerLink]="['/viewOrders']" routerLinkActive="active-link" class="nav-link mylink">Orders</a>
+      </li>
+
+      <li class="nav-item myitem" *ngIf="loggedIn">
+        <a style="cursor: pointer;" [routerLink]="['/updatePassword']" routerLinkActive="active-link" class="nav-link mylink">Update Password</a>
+      </li>
+
+      <li class="nav-item myitem" *ngIf="!loggedIn">
+        <a class="nav-link mylink disable"><i class="fa fa-phone"></i>&nbsp;Call Us : 080 2233447</a>
+      </li>
+      
+      <li class="nav-item myitem" *ngIf="loggedIn">
+        <a style="cursor: pointer;" (click)="logoutFn()" class="nav-link mylink"><i class="fa fa-sign-out" ></i>&nbsp;Logout</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<!-- <div class="container-fluid content"> -->
+  <router-outlet></router-outlet>
+<!-- </div> -->

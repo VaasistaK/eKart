@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="panel panel-primary panel-body1" style="margin-top: 100px;">
+        <div class="panel-body">
+
+
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div>
+                        <span (click)="redirectToLogin()"><i style="float: left;padding-top: 40px; padding-left: 7px; cursor: pointer;" class="carousel-control-prev-icon"></i></span>
+                        <h3 class="card-title">Create an Account!</h3>
+                        
+
+                    </div>
+                    
+                    <!-- <h6 class="card-subtitle mb-2">Get Best Discount On All Type Of Gadgets</h6> -->
+
+                    <div>
+
+                        <div style="margin: 20px;">
+
+                            <form [formGroup]="signupForm">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label"  style="float: left;color:white" for="form2Example1">Name:</label>
+                                    <input (change)="clearErrorMessage()" placeholder="Enter Name" type="text" formControlName="name" id="form2Example1" class="form-control"/>
+    
+                                    <div style="float: left;" *ngIf="signupForm.controls['name'].errors">
+                                    <span *ngIf="signupForm.controls['name'].errors?.['required'] && !signupForm.controls['name'].pristine" class="error-message">Name is required</span>
+                                    <span *ngIf="signupForm.controls['name'].errors?.['pattern']" class="error-message">Name contains invalid character</span>
+                                    </div>
+    
+                                    
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label"  style="float: left;color:white" for="form2Example4">Username:</label>
+                                    <input (change)="clearErrorMessage()" placeholder="Enter Username" type="email" formControlName="username" id="form2Example4" class="form-control"/>
+    
+                                    <div style="float: left;" *ngIf="signupForm.controls['username'].errors">
+                                    <span *ngIf="signupForm.controls['username'].errors?.['required'] && !signupForm.controls['username'].pristine" class="error-message">Username is required</span>
+                                    <span *ngIf="signupForm.controls['username'].errors?.['email']" class="error-message">Please enter valid username</span>
+                                    <!-- <span *ngIf="signupForm.controls['username'].errors?.['userPresent']" class="error-message">Username aleady taken</span> -->
+                                    </div>
+    
+                                    
+                                </div>
+    
+                                <!-- Password input -->
+                                <div class="form-outline mb-4" style="margin-bottom: 0px;">
+                                    <label class="form-label" style="float: left;color:white" for="form2Example2">Password:</label>
+                                    <input placeholder="Enter Password" type="password" formControlName="password" id="form2Example2" class="form-control" />
+    
+    
+                                    <div style="float: left;" *ngIf="signupForm.controls['password'].errors">
+                                        <span *ngIf="signupForm.controls['password'].errors?.['required'] && !signupForm.controls['password'].pristine" class="error-message">Password is required</span>
+                                        <!-- <span *ngIf="signupForm.controls['password'].errors?.['minlength']" class="error-message">Password should contain atleast 8 characters</span> -->
+                                        <span *ngIf="signupForm.controls['password'].errors?.['pattern']" style="float: left;" class="error-message">Password should contain atleast an uppercase, a lowercase, a digit and a special character</span>
+                                    </div>
+    
+                                </div>
+
+                                <div class="form-outline" style="margin-bottom: 0px;">
+                                    <label class="form-label" style="float: left;color:white" for="form2Example3">Confirm Password:</label>
+                                    <input placeholder="Re-enter Password" type="password" formControlName="confirmPassword" id="form2Example3" class="form-control" />
+    
+    
+                                    <div style="float: left;" *ngIf="signupForm.controls['confirmPassword'].invalid">
+                                        <span *ngIf="signupForm.controls['confirmPassword'].errors?.['confirmedValidator']" class="error-message">Password deos not match</span>
+                                    </div>
+    
+                                </div>
+
+                                <div *ngIf="errorMessage">
+                                    <span class="error-message">{{errorMessage}}</span>
+                                </div>
+
+                                <div style="padding-top: 20px;" *ngIf="successMessage">
+                                    <span style="color: lightgreen; font-size: medium;">{{successMessage}}</span>
+                                </div>
+    
+                                <div style="padding-top: 40px;">
+                                    <button *ngIf="!showLoginButton" [disabled]="!signupForm.valid" class="btn btn-outline-light" (click)="signup()">Signup</button>
+                                    <button *ngIf="showLoginButton" class="btn btn-outline-light" (click)="redirectToLogin()">Proceed to Login</button>
+                                </div>
+                        
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

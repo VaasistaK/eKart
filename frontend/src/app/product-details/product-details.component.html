@@ -1,0 +1,148 @@
+<section>
+    <div class="container py-5">
+      <div *ngIf="productDetails">
+      <div class="row justify-content-center mb-3">
+        
+        <div class="col-md-12 col-xl-10">
+          
+          <div class="card shadow-0 border rounded-3">
+            <div class="card-body" style="text-align: center;">
+              <span (click)="gotToProducts()"><i style="color: black;float: left;padding-top: 40px; padding-left: 7px; cursor: pointer;" class="carousel-control-prev-icon"></i></span>
+                <div class="card-image-style">
+                  
+                    <img src="{{productDetails.imageUrl}}"
+                      class="w-50" />
+                  
+                </div>
+                <div style="padding-top: 10px;">
+                  <h5><strong>{{productDetails.productName}}</strong></h5>
+                  <div class="d-flex flex-row" style="justify-content: center;">
+                    <div class="ms-auto text-warning">
+                      <span *ngFor="let x of productDetails.rating | decimal:'before'"><i class="fa fa-star"></i></span>
+                      <span *ngFor="let y of productDetails.rating | decimal:'after'"><i class="fa fa-star-o"></i></span>
+                    </div>&nbsp;&nbsp;
+                    <span>({{productDetails.rating}} out of 5)</span>
+                  </div>
+                  <p class="text-truncate mb-4 mb-md-0">
+                    {{productDetails.description}}
+                  </p>
+                  <div class="mt-1 mb-0 small">
+                    <span *ngFor="let feature of productDetails.keyFeatures">{{feature}}<span class="text-danger"> • </span></span>
+                  </div>
+                </div>
+                <div class="border-sm-start-none border-start" style="padding-top: 10px;">
+                  <div class="d-flex flex-row align-items-center mb-1" style="justify-content: center;">
+                    <h4 class="mb-1 me-1">{{productDetails.dicountedPrice | currency: "INR": "symbol"}}</h4>&nbsp;&nbsp;
+                    <span *ngIf="productDetails.isDiscountAvailable" class="text-danger"><s>{{productDetails.price | currency: "INR": "symbol"}}</s>(-{{productDetails.discountPercentage}}%)</span>&nbsp;&nbsp;
+                    
+                  </div>
+                </div>
+                <div *ngIf="productDetails.deliveryCharge === 0"><h6 class="mb-1 me-1 text-success">Free shipping</h6></div>
+                <div *ngIf="productDetails.deliveryCharge !== 0"><h6 class="mb-1 me-1">(Excluding Delivery Charges)</h6></div>
+            </div>
+            
+          </div>
+
+          <div class="card shadow-0 border rounded-3">
+            <div class="card-body" style="text-align: center;">
+              <div *ngIf="isProductPresent">
+                <span>Looks like you already have this item in your cart. You can wish to add more quantity here!</span>
+                <div style="padding-top: 10px; padding-bottom: 10px;">
+                  <label class="form-label" style="float: left;color:white; padding-top: 6px; padding-right: 7px;"
+                    for="form2Example3">Quantity in Cart&nbsp;<span style="font-size: 0.7rem;">(Maximum 4 no. per product is allowed)</span>:</label>
+                  <input style="max-width: 25rem;" [ngModel]="quantityInCart" (ngModelChange)="checkQuantity($event)" type="number" id="form2Example3" class="form-control" min="0" max="4"/>
+                
+                </div>
+                <div class="btn-flex">
+                  <button [disabled]="!enableUpdateButton" class="btn btn-outline-light" (click)="updateCart()">Update Cart</button>
+                  <button class="btn btn-outline-light" (click)="goToCart()">View Cart</button>
+                </div>
+                
+                <div *ngIf="successMessage" style="color: lightgreen; font-size: medium; padding-top: 10px;">
+                  <span>{{successMessage}}</span>
+              </div>
+              </div>
+
+              <div *ngIf="!isProductPresent">
+                <span>Add this item to your Cart</span>
+                <div style="padding-top: 10px; padding-bottom: 10px;">
+                  <label class="form-label" style="float: left;color:white; padding-top: 6px; padding-right: 7px;"
+                    for="form2Example3">Quantity in Cart&nbsp;<span style="font-size: 0.7rem;">(Maximum 4 no. per product is
+                      allowed)</span>:</label>
+                  <input style="max-width: 25rem;" [ngModel]="quantityInCart" (ngModelChange)="checkQuantityToAdd($event)"
+                    type="number" id="form2Example3" class="form-control" min="0" max="4" />
+                  
+                </div>
+                <div class="btn-flex">
+                  <button [disabled]="!enableAddButton" class="btn btn-outline-light" (click)="addCart()">Add to Cart</button>
+                  <button class="btn btn-outline-light" (click)="goToCart()">View Cart</button>
+                </div>
+                <div *ngIf="successMessage" style="color: lightgreen; font-size: medium; padding-top: 10px;">
+                  <span>{{successMessage}}</span>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <!-- <div class="d-flex mt-4" style="flex-direction: row; justify-content: center;">
+            <button class="btn btn-outline-dark" type="button">Add to Cart</button>
+             <button class="btn btn-outline-light btn-sm mt-2" type="button">
+              Add to wishlist
+            </button> 
+          </div> -->
+          <hr class="hr hr-blurry" />
+      <div class="accordion" id="accordionExample">
+        <div class="card z-depth-0 bordered">
+          <div class="card-header acc-head" id="headingOne">
+            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne">
+              <!-- <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Collapsible Group Item #1
+              </button> -->
+              Reviews By Customers
+              <span><i class="fa fa-chevron-down"></i></span>
+            </h5>
+            
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+            data-parent="#accordionExample">
+            <div class="card-body">
+              <div *ngFor="let review of productDetails.reviews">
+                <div class="row">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+                  <i class="fa fa-user" style="font-size: 5em;"></i>
+                </div>
+                <div class="col-lg-8">
+                  <p class="fw-bold lead mb-2"><strong>Anonymus</strong></p>
+                  <p class="ms-auto text-warning">
+                    <span *ngFor="let x of review.rating | decimal:'before'"><i class="fa fa-star"></i></span>
+                    <span *ngFor="let y of review.rating | decimal:'after'"><i class="fa fa-star-o"></i></span>
+                  </p>
+                  <p class="fw-light mb-4">
+                    {{review.reviewComment}}
+                  </p>
+                </div>
+              </div>
+                <hr class="hr" style="border: 0.6px solid rgba(245, 245, 245, 0.361);"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!productDetails" style="display: flex;flex-direction: column;justify-content: center;align-content: center;flex-wrap: wrap;text-align: center;">
+      <div><span><i style="font-size: 10em;" class="bi bi-search"></i></span></div>
+      <div>
+        <h3>Couldn't fetch Product Details. Inconvenience is regretted!&nbsp;<i class="bi bi-emoji-frown-fill"></i></h3>
+        <br />
+        You can browse other products <a [routerLink]="['/products']">here</a>
+      </div>
+    </div>
+
+    </div>
+  </section>

@@ -1,0 +1,133 @@
+<section class="h-100">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div *ngIf="!showSuccessScreen" class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black" style="font-weight: bolder;">Shopping Cart</h3>
+        </div>
+        <hr class="hr hr-blurry" />
+        <div *ngIf="userCart && userCart.productDetails.length !== 0">
+          <div *ngFor="let product of userCart.productDetails; let i = index" class="card rounded-3 mb-4">
+            <div class="card-body p-4">
+              <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img src="{{product.imageUrl}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                  <p class="lead fw-normal mb-2">{{product.productName}}</p>
+                  <!-- <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p> -->
+                </div>
+                <div class="d-flex" style="flex-direction: column;">
+                  <div style="display: flex;">
+                    <button [disabled]="userCart.productDetails[i].quantity === 1" class="btn btn-link px-2"
+                      (click)="stepDown(i)">
+                      <i class="fa fa-minus"></i>
+                    </button>
+
+                    <input id="form1" min="0" max="4" name="quantity" type="number" class="form-control form-control-sm"
+                      [ngModel]="userCart.productDetails[i].quantity" (ngModelChange)="valueChanged($event, i)" />
+
+                    <button [disabled]="userCart.productDetails[i].quantity === 4" class="btn btn-link px-2"
+                      (click)="stepUp(i)">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+
+                  <!-- <div>
+                  <button style="border-radius: 1.5em; font-size: 0.7em;" *ngIf="userCart.productDetails[i].quantity !== originalCart.productDetails[i].quantity" (click)="save(i)" class="btn btn-outline-light">Save</button>
+                </div> -->
+                </div>
+                <!-- <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1"> -->
+                <div style="font-size: 0.9em;">
+                  <!-- <div class="mb-0">Base Price: {{product.dicountedPrice | currency:"INR":"symbol"}}</div>
+                  <div class="mb-0">Delivery Charge: {{product.deliveryCharge | currency:"INR":"symbol"}}</div>
+                  <hr style="border: 1px solid white;"/>
+                  <div class="mb-0">Sub Total: {{(product.quantity * product.dicountedPrice) + product.deliveryCharge  | currency:"INR":"symbol"}}</div> -->
+                  <table style="text-align: left;">
+                    <tr>
+                      <td>Base Price:</td>
+                      <td>{{product.price * product.quantity | currency:"INR":"symbol"}}</td>
+                    </tr>
+                    <tr *ngIf="product.isDiscountAvailable">
+                      <td>Discount Amount:</td>
+                      <td><span class="text-danger">-{{product.quantity * (product.price - product.dicountedPrice) |
+                          currency:"INR":"symbol"}}</span></td>
+                    </tr>
+                    <tr>
+                      <td>Delivery Charge:</td>
+                      <td>{{product.deliveryCharge * product.quantity | currency:"INR":"symbol"}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <hr style="border: 1px solid white;" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Sub Total:</td>
+                      <td>{{(product.dicountedPrice +  product.deliveryCharge) * product.quantity | currency:"INR":"symbol"}}</td>
+                    </tr>
+                  </table>
+
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end" style="cursor: pointer;">
+                  <a (click)="deleteItem(i)" class="text-danger"><i class="fa fa-trash fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr hr-blurry" />
+
+          <div class="card" style="text-align: center;">
+            <div class="card-body down-card">
+              <h4><strong>Checkout Details</strong></h4>
+              <table style="text-align: left;">
+                <tbody>
+                  <tr>
+                    <td>Total MRP:</td>
+                    <td>{{userCart.totalPrice | currency:'INR':'symbol'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Delivery Charge:</td>
+                    <td>{{userCart.totalDeliveryCharge | currency:'INR':'symbol'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Amount:</td>
+                    <td>{{userCart.grandTotal | currency:'INR':'symbol'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="flex-direction: column;">
+              <button (click)="placeOrder()" type="button" class="btn btn-outline-light" id="order-btn">Place Order</button>
+            </div>
+              <div class="text-danger">
+                {{errorMessage}}
+              </div>
+              <div *ngIf="successMessage">
+                {{successMessage}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="!userCart || userCart.productDetails.length === 0" class="error-cond" style="text-align: center;">
+          <span><i class="bi bi-wind wind-icon"></i><i style="font-size: 10em;" class="fa fa-shopping-cart rotate-45"></i></span>
+          <div>
+            <h3>Looks like your cart is Light!</h3>
+            <br />
+            Add some items in <a [routerLink]="['/products']">Products</a> page
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showSuccessScreen" class="col-10" style="display: flex;flex-direction: column;justify-content: center;align-content: center;flex-wrap: wrap;text-align: center;">
+        <div><span><i style="font-size: 10em;" class="bi bi-truck"></i></span></div>
+        <div>
+          <h3>Your Order is on the way!</h3>
+          <br />
+          You can view the status <a [routerLink]="['/viewOrders']">here</a>!
+          Order more items in <a [routerLink]="['/products']">Products</a> page!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

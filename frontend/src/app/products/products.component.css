@@ -1,0 +1,87 @@
+*{
+    font-family:'Montserrat', sans-serif;
+}
+
+.card{
+    color: white;
+    background-color: black; 
+    text-align: center;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+    transition: all .3s ease-in-out;
+}
+
+.card:hover{
+    
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    transform: translate3d(0px, -1px, 0px);
+}
+
+
+.custom-control-input:focus~.custom-control-label::before {
+    /* when the button is toggled off
+it is still in focus and a violet border will appear */
+    border-color: black !important;
+    /* box shadow is blue by default
+but we do not want any shadow hence we have set
+all the values as 0 */
+    box-shadow:
+        0 0 0 0rem rgba(0, 0, 0, 0) !important;
+}
+
+/*sets the background color of
+		switch to violet when it is checked*/
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: black !important;
+    background-color: black !important;
+}
+
+/*sets the background color of
+		switch to violet when it is active*/
+.custom-control-input:active~.custom-control-label::before {
+    background-color: black !important;
+    border-color: black !important;
+}
+
+.search-toggle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar{
+    max-width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.product-name{
+    font-size: 1em; 
+    cursor: pointer;
+}
+
+.product-name:hover{
+    text-decoration: underline;
+}
+
+@font-face{
+    font-family: navBrandFont;
+    src:url(../../assets/Fonts/Oswald-Heavy.ttf);
+}
+
+@font-face{
+    font-family: stencil;
+    src:url(../../assets/Fonts/Oswald-Stencil.ttf);
+}
+
+@font-face{
+    font-family: myFont;
+    src:url(../../assets/Fonts/Oswald-MediumItalic.ttf);
+}
+
+@font-face{
+    font-family: regular;
+    src:url(../../assets/Fonts/Oswald-Light.ttf);
+}

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="panel panel-primary panel-body1" style="margin-top: 100px;">
+        <div class="panel-body">
+
+
+            <div class="card">
+                <div class="card-body">
+
+
+                    <h3 class="card-title">Welcome to eKart Application!</h3>
+                    <h6 class="card-subtitle mb-2">Get Best Discount On All Type Of Gadgets</h6>
+
+                    <div>
+                        <div style="margin: 20px;">
+
+                        <form [formGroup]="loginForm">
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label"  style="float: left;color:white" for="form2Example1">Username:</label>
+                                <input placeholder="Enter Username" type="text" formControlName="username" id="form2Example1" class="form-control"/>
+
+                                <div style="float: left;" *ngIf="loginForm.controls['username'].errors">
+                                <span *ngIf="loginForm.controls['username'].errors?.['required'] && !loginForm.controls['username'].pristine" class="error-message">Username is required</span>
+                                </div>
+
+                                
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline" style="margin-bottom: 0px;">
+                                <label class="form-label" style="float: left;color:white" for="form2Example2">Password:</label>
+                                <input placeholder="Enter Password" type="password" formControlName="password" id="form2Example2" class="form-control" />
+
+
+                                <div style="float: left;" *ngIf="loginForm.controls['password'].errors">
+                                    <span *ngIf="loginForm.controls['password'].errors?.['required'] && !loginForm.controls['password'].pristine" class="error-message">Password is required</span>
+                                </div>
+
+                            </div>
+
+                            <div style="padding-top: 10px;" *ngIf="errorMessage">
+                                <span class="error-message">{{errorMessage}}</span>
+                            </div>
+
+                            <div style="padding-top: 40px;">
+                                <button [disabled]="!loginForm.valid" class="btn btn-outline-light" (click)="login()">Login</button>
+                            </div>
+                        
+                        </form>
+                        </div>
+
+                        <div style="padding-top: 5px;">
+                            <span id="signup" (click)="signup()">Not a user? Signup here</span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

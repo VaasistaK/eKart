@@ -1,0 +1,23 @@
+Mon Dec 05 2022 08:36:40 GMT+0530 (India Standard Time) - GET - /adasf - 404 - Request does not Exist! 
+Mon Dec 05 2022 08:41:56 GMT+0530 (India Standard Time) - POST - /signup - 400 - User already Present. Please try another username 
+Mon Dec 05 2022 08:46:42 GMT+0530 (India Standard Time) - POST - /signup - 400 - User already Present. Please try another username 
+Mon Dec 05 2022 08:48:12 GMT+0530 (India Standard Time) - POST - /login - 400 - Username/Password is incorrect! 
+Mon Dec 05 2022 08:48:26 GMT+0530 (India Standard Time) - GET - /viewCart/kakashi@konoha.com - 400 - Cart is empty 
+Mon Dec 05 2022 08:49:48 GMT+0530 (India Standard Time) - GET - /getOrders/kakashi@konoha.com - 400 - No Orders Available! 
+Mon Dec 05 2022 08:49:51 GMT+0530 (India Standard Time) - GET - /viewCart/kakashi@konoha.com - 400 - Cart is empty 
+Mon Dec 05 2022 10:48:00 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 11:10:27 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 11:47:48 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 11:47:57 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 13:54:52 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 13:55:45 GMT+0530 (India Standard Time) - GET - /viewCart/ram@abc.com - 400 - Cart is empty 
+Mon Dec 05 2022 14:43:37 GMT+0530 (India Standard Time) - POST - /login - 400 - User not found! 
+Mon Dec 05 2022 14:43:55 GMT+0530 (India Standard Time) - POST - /login - 400 - Username/Password is incorrect! 
+Mon Dec 05 2022 14:44:14 GMT+0530 (India Standard Time) - GET - /viewCart/anusree@gmail.com - 400 - Cart is empty 
+Mon Dec 05 2022 14:44:30 GMT+0530 (India Standard Time) - GET - /viewCart/anusree@gmail.com - 400 - Cart is empty 
+Mon Dec 05 2022 14:44:47 GMT+0530 (India Standard Time) - GET - /getOrders/anusree@gmail.com - 400 - No Orders Available! 
+Mon Dec 05 2022 14:46:03 GMT+0530 (India Standard Time) - POST - /login - 400 - Username/Password is incorrect! 
+Mon Dec 05 2022 14:46:12 GMT+0530 (India Standard Time) - GET - /viewCart/anusree@gmail.com - 400 - Cart is empty 
+Mon Dec 05 2022 14:49:59 GMT+0530 (India Standard Time) - GET - /viewCart/anusree@gmail.com - 400 - Cart is empty 
+Mon Dec 05 2022 14:53:48 GMT+0530 (India Standard Time) - GET - /viewCart/vk7@gmail.com - 400 - Cart is empty 
+Mon Dec 05 2022 17:28:58 GMT+0530 (India Standard Time) - GET - /viewCart/vk7@gmail.com - 400 - Cart is empty 

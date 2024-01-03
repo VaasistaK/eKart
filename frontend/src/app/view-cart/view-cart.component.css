@@ -1,0 +1,77 @@
+*{
+    font-family:'Montserrat', sans-serif;
+}
+
+.card{
+    color: white;
+    background-color: black; 
+    text-align: center;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+    transition: all .3s ease-in-out;
+}
+
+.card:hover{
+    
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    transform: translate3d(0px, -1px, 0px);
+}
+
+#order-btn{
+    border-radius: 3em;
+    width: 10rem;
+    font-family: regular;
+    font-size: larger;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* background-color: rgba(255, 255, 255, 0.607); */
+    /* box-shadow: 0 5px 10px */
+}
+
+#order-btn:hover:enabled{
+    box-shadow: 0px 10px 12px 10px;
+}
+
+.down-card{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.error-cond{
+    display: flex; flex-direction: column;justify-content: center;
+}
+
+.wind-icon{
+    font-size: 6em; font-weight: bolder; opacity: 50%;
+}
+
+.rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@font-face{
+    font-family: navBrandFont;
+    src:url(../../assets/Fonts/Oswald-Heavy.ttf);
+}
+
+@font-face{
+    font-family: stencil;
+    src:url(../../assets/Fonts/Oswald-Stencil.ttf);
+}
+
+@font-face{
+    font-family: myFont;
+    src:url(../../assets/Fonts/Oswald-MediumItalic.ttf);
+}
+
+@font-face{
+    font-family: regular;
+    src:url(../../assets/Fonts/Oswald-Light.ttf);
+}

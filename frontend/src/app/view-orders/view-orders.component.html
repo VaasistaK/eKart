@@ -1,0 +1,66 @@
+<section class="h-100">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div *ngIf="!showEmptyPage" class="col-10">
+  
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-normal mb-0 text-black" style="font-weight: bolder;">Your Orders</h3>
+          </div>
+          <hr class="hr hr-blurry" />
+          <div>
+            <div *ngFor="let order of userOrders; let i = index" class="card rounded-3 mb-4">
+              <div class="card-body p-4">
+                <div>
+
+                  <table class="table" style="color: white; border: 0px; border:none;">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Order ID</th>
+                        <th>Items</th>
+                        <th>Ordered On</th>
+                        <th>Amount Paid</th>
+                        <th>Will be delivered on</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{order.orderId}}</td>
+                      <td>
+                        <div *ngFor="let product of order.cartDetails.productDetails">
+                          <span>{{product.productName}}&nbsp;<span style="font-size: 0.7em;">x{{product.quantity}}</span></span>
+                        </div>
+                      </td>
+                      <td>{{order.orderedOn | date:"mediumDate"}}</td>
+                      <td>{{order.cartDetails.grandTotal | currency:"INR":"symbol"}}</td>
+                      <td>{{order.expectedOn | date:"mediumDate"}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+
+                  <!-- <div class="col-md-3 col-lg-3 col-xl-3">
+                    <div *ngFor="let product of order.cartDetails.productDetails">
+                      <p class="fw-normal mb-2">{{product.productName}}<span class="text-muted" style="font-size: 0.7em;">X{{product.quantity}}</span></p>
+                    </div>
+                  </div> -->
+                  <!-- <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1"> -->
+                </div>
+              </div>
+            </div>
+            <hr class="hr hr-blurry" />
+  
+          </div>
+        </div>
+        <div *ngIf="showEmptyPage" class="col-10" style="display: flex;flex-direction: column;justify-content: center;align-content: center;flex-wrap: wrap;text-align: center;">
+          <div><span><i style="font-size: 10em;" class="bi bi-search"></i></span></div>
+          <div>
+            <h3>You don't have any recent Orders&nbsp;<i class="bi bi-emoji-frown-fill"></i></h3>
+            <br />
+            Order items in <a [routerLink]="['/products']">Products</a> page!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

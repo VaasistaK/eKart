@@ -1,0 +1,732 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+const database = 'ekartdb';
+const collection = 'users';
+
+// Create a new database.
+use(database);
+
+// Create a new collection.
+//db.createCollection(collection);
+
+
+// db.users.insertMany([
+//   { 'username': 'john.doe', 'name': 'John Doe', 'password': '123456'},
+//   { 'username': 'jane.doe', 'name': 'Jane Doe', 'password': '123456'},
+//   { 'username': 'admin', 'name': 'admin', 'password': 'admin'},
+  
+// ]);
+
+// db.products.insertMany([
+// 	{
+// 		"productId": "P1001",
+// 		"productName": "Pro Display HDR",
+// 		"manufacturer": "Apple",
+// 		"price": 80000,
+// 		"description": "This is a premium desktop by Apple which supports HDR10 display",
+// 		"category": "Desktop",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 10,
+// 		"dicountedPrice": 72000,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.5,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			},
+// 			{
+// 				"rating": 4.7,
+// 				"reviewComment": "Good product. Better to buy in a sale"
+// 			},
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "Buy it"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/apple_mac.webp"
+// 	},
+// 	{
+// 		"productId": "P1002",
+// 		"productName": "HP Notebook",
+// 		"manufacturer": "HP",
+// 		"price": 67000,
+// 		"description": "A Laptop designed by HP",
+// 		"category": "Laptop",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 15,
+// 		"dicountedPrice": 56950,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.3,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/laptop1.webp"
+// 	},
+// 	{
+// 		"productId": "P1003",
+// 		"productName": "ASUS Vivobook",
+// 		"manufacturer": "Asus",
+// 		"price": 75000,
+// 		"description": "A gaming Laptop designed by ASUS",
+// 		"category": "Laptop",
+// 		"isDiscountAvailable": false,
+// 		"discountPercentage": 0,
+// 		"dicountedPrice": 75000,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.0,
+// 		"reviews": [
+// 			{
+// 				"rating": 4.0,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.0,
+// 				"reviewComment": "Slightly Overpriced"
+// 			}
+// 		],
+// 		"isDealOfTheDay": false,
+// 		"imageUrl": "assets/Images/laptop2.webp"
+// 	},
+// 	{
+// 		"productId": "P1004",
+// 		"productName": "iPad Mini Black(32GB)",
+// 		"manufacturer": "Apple",
+// 		"price": 40000,
+// 		"description": "Designed by Apple in California",
+// 		"category": "Tablet",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 5,
+// 		"dicountedPrice": 38000,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.7,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			},
+// 			{
+// 				"rating": 4.7,
+// 				"reviewComment": "Good product. Better to buy in a sale"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/apple_ipad_mini.webp"
+// 	},
+// 	{
+// 		"productId": "P1005",
+// 		"productName": "Boat Rockerz 450",
+// 		"manufacturer": "Boat",
+// 		"price": 1500,
+// 		"description": "Headphones designed by Boat with better sound quality.",
+// 		"category": "Headphones",
+// 		"isDiscountAvailable": false,
+// 		"discountPercentage": 0,
+// 		"dicountedPrice": 1500,
+// 		"deliveryCharge": 100,
+// 		"rating": 3.5,
+// 		"reviews": [
+// 			{
+// 				"rating": 3.8,
+// 				"reviewComment": "Sound quality might be better"
+// 			},
+// 			{
+// 				"rating": 3.3,
+// 				"reviewComment": "Not recommended to buy."
+// 			}
+// 		],
+// 		"isDealOfTheDay":false,
+// 		"imageUrl": "assets/Images/headphones.webp"
+// 	},
+// 	{
+// 		"productId": "P1006",
+// 		"productName": "Samsung A32(64GB)",
+// 		"manufacturer": "Samsung",
+// 		"price": 26000,
+// 		"description": "A budget smartphone with better camera performance",
+// 		"category": "Mobile",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 20,
+// 		"dicountedPrice": 20800,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.0,
+// 		"reviews": [
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			}
+// 		],
+// 		"isDealOfTheDay":true,
+// 		"imageUrl": "assets/Images/android_1.webp"
+// 	},
+// 	{
+// 		"productId": "P1007",
+// 		"productName": "Oneplus 10R 5G(128GB)",
+// 		"manufacturer": "Oneplus",
+// 		"price": 35000,
+// 		"description": "An Android device designed by Oneplus with optimized charging",
+// 		"category": "Mobile",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 10,
+// 		"dicountedPrice": 31500,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.2,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			}
+// 		],
+// 		"isDealOfTheDay":true,
+// 		"imageUrl": "assets/Images/apple_mac.webp"
+// 	},
+// 	{
+// 		"productId": "P1008",
+// 		"productName": "Canon EOS 200D",
+// 		"manufacturer": "Canon",
+// 		"price": 60000,
+// 		"description": "A DSLR camera designed by Canon",
+// 		"category": "Camera",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 7,
+// 		"dicountedPrice": 55800,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.7,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/digital_camera.webp"
+// 	},
+// 	{
+// 		"productId": "P1009",
+// 		"productName": "LG 32-inch TV",
+// 		"manufacturer": "LG",
+// 		"price": 25000,
+// 		"description": "A 32 inch tv by LG",
+// 		"category": "TV",
+// 		"isDiscountAvailable": false,
+// 		"discountPercentage": 0,
+// 		"dicountedPrice": 25000,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.7,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			},
+// 			{
+// 				"rating": 4.7,
+// 				"reviewComment": "Good product. Better to buy in a sale"
+// 			},
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "Buy it"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/tv_1.webp"
+// 	},
+// 	{
+// 		"productId": "P1010",
+// 		"productName": "Dell Inspiron 15 3511",
+// 		"manufacturer": "Dell",
+// 		"price": 55000,
+// 		"description": "A Laptop designed by Dell",
+// 		"category": "Laptop",
+// 		"isDiscountAvailable": true,
+// 		"discountPercentage": 20,
+// 		"dicountedPrice": 44000,
+// 		"deliveryCharge": 100,
+// 		"rating": 4.5,
+// 		"reviews": [
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "An excellent Product and smooth delivery experience"
+// 			},
+// 			{
+// 				"rating": 4.3,
+// 				"reviewComment": "Slightly Overpriced"
+// 			},
+// 			{
+// 				"rating": 4.5,
+// 				"reviewComment": "Value for money"
+// 			},
+// 			{
+// 				"rating": 4.7,
+// 				"reviewComment": "Good product. Better to buy in a sale"
+// 			},
+// 			{
+// 				"rating": 5,
+// 				"reviewComment": "Buy it"
+// 			}
+// 		],
+// 		"isDealOfTheDay": true,
+// 		"imageUrl": "assets/Images/laptop3.webp"
+// 	}
+// ]);
+
+// db.products.updateOne({"productId":"P1004"},{$set:{"imageUrl":"assets/Images/ipad_mini_black.webp"}});
+
+// db.products.deleteMany({});
+
+db.products.insertMany([
+	{
+		"productId": "P1001",
+		"productName": "Pro Display HDR",
+		"manufacturer": "Apple",
+		"price": 80000,
+		"description": "This is a premium desktop by Apple which supports HDR10 display",
+		"category": "Desktop",
+		"isDiscountAvailable": true,
+		"discountPercentage": 10,
+		"dicountedPrice": 72000,
+		"deliveryCharge": 100,
+		"rating": 4.5,
+		"keyFeatures": [
+			"Intel Core i5 9th Gen",
+			"Quad Core, 2.4GHz Clock Speed",
+			"8GB RAM",
+			"512GB SSD",
+			"4 GB NVIDIA Graphics Card",
+			"17.3 inches, 1920x1080 pixels",
+			"Windows 10 OS",
+			"1 Year Warranty"
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			},
+			{
+				"rating": 4.7,
+				"reviewComment": "Good product. Better to buy in a sale"
+			},
+			{
+				"rating": 5,
+				"reviewComment": "Buy it"
+			}
+		],
+		"isDealOfTheDay": true,
+		"imageUrl": "assets/Images/apple_mac.webp"
+	},
+	{
+		"productId": "P1002",
+		"productName": "HP Notebook",
+		"manufacturer": "HP",
+		"price": 67000,
+		"description": "A Laptop designed by HP",
+		"category": "Laptop",
+		"isDiscountAvailable": true,
+		"discountPercentage": 15,
+		"dicountedPrice": 56950,
+		"deliveryCharge": 100,
+		"rating": 4.3,
+		"keyFeatures": [
+			"Intel Core i7 8th Gen",
+			"Quad Core, 1.8GHz Clock Speed",
+			"8GB RAM",
+			"512 GB Hard Disk",
+			"Intel UHD Graphics 620",
+			"13.3inches, 1920x1080 pixels",
+			"Windows 10 OS",
+			"3 Year Warranty"
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			}
+		],
+		"isDealOfTheDay": true,
+		"imageUrl": "assets/Images/laptop1.webp"
+	},
+	{
+		"productId": "P1003",
+		"productName": "ASUS Vivobook",
+		"manufacturer": "Asus",
+		"price": 75000,
+		"description": "A gaming Laptop designed by ASUS",
+		"category": "Laptop",
+		"isDiscountAvailable": false,
+		"discountPercentage": 0,
+		"dicountedPrice": 75000,
+		"deliveryCharge": 100,
+		"rating": 4.0,
+		"keyFeatures": [
+			"AMD Ryzen 5 3rd Gen",
+			"Quad Core, 2.1GHz Clock Speed",
+			"8GB DDR4 RAM",
+			"512GB SSD",
+			"Radeon Vega 8",
+			"14 inches, 1920x1080 pixels",
+			"Windows 10 OS",
+			"1 Year Warranty"
+		],
+		"reviews": [
+			{
+				"rating": 4.0,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.0,
+				"reviewComment": "Slightly Overpriced"
+			}
+		],
+		"isDealOfTheDay": false,
+		"imageUrl": "assets/Images/laptop2.webp"
+	},
+	{
+		"productId": "P1004",
+		"productName": "iPad Mini Black(32GB)",
+		"manufacturer": "Apple",
+		"price": 40000,
+		"description": "Designed by Apple in California",
+		"category": "Tablet",
+		"isDiscountAvailable": true,
+		"discountPercentage": 5,
+		"dicountedPrice": 38000,
+		"deliveryCharge": 100,
+		"rating": 4.7,
+		"keyFeatures": [
+			"Single Sim",
+			"3G, 4G, Wi-Fi",
+			"Apple A12X, Octa Core, 2.49GHz Processor",
+			"4GB RAM, 512GB inbuilt",
+			"9720mAh Battery",
+			"12.9 inches, 2732x2048 px Display",
+			"12 MP Rear & 7 MP Front Camera",
+			"Memory Card Not Supported"
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			},
+			{
+				"rating": 4.7,
+				"reviewComment": "Good product. Better to buy in a sale"
+			}
+		],
+		"isDealOfTheDay": true,
+		"imageUrl": "assets/Images/ipad_mini_black.webp"
+	},
+	{
+		"productId": "P1005",
+		"productName": "Boat Rockerz 450",
+		"manufacturer": "Boat",
+		"price": 1500,
+		"description": "Headphones designed by Boat with better sound quality.",
+		"category": "Headphones",
+		"isDiscountAvailable": false,
+		"discountPercentage": 0,
+		"dicountedPrice": 1500,
+		"deliveryCharge": 100,
+		"rating": 3.5,
+		"keyFeatures":[
+			"1 Year Warranty",
+			"Active Noise Cancellation",
+			"20hr Battery Backup"
+		],
+		"reviews": [
+			{
+				"rating": 3.8,
+				"reviewComment": "Sound quality might be better"
+			},
+			{
+				"rating": 3.3,
+				"reviewComment": "Not recommended to buy."
+			}
+		],
+		"isDealOfTheDay":false,
+		"imageUrl": "assets/Images/headphones.webp"
+	},
+	{
+		"productId": "P1006",
+		"productName": "Samsung A32(64GB)",
+		"manufacturer": "Samsung",
+		"price": 26000,
+		"description": "A budget smartphone with better camera performance",
+		"category": "Mobile",
+		"isDiscountAvailable": true,
+		"discountPercentage": 20,
+		"dicountedPrice": 20800,
+		"deliveryCharge": 100,
+		"rating": 2.0,
+		"keyFeatures":[
+			"Dual Sim, 3G, 4G, VoLTE, Wi-Fi",
+			"Snapdragon 665, Octa Core, 2GHz Processor",
+			"4GB RAM, 64GB inbuilt",
+			"5000mAh Battery",
+			"6.52 inches, 720x1600px Display with Water Drop Notch",
+			"12MP Quad Rear & 8MP Front Camera",
+			"Memory Card Supported, upto 256GB",
+			"Android 12"
+		],	
+		"reviews": [
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			}
+		],
+		"isDealOfTheDay":true,
+		"imageUrl": "assets/Images/android_1.webp"
+	},
+	{
+		"productId": "P1007",
+		"productName": "Oneplus 10R 5G(128GB)",
+		"manufacturer": "Oneplus",
+		"price": 35000,
+		"description": "An Android device designed by Oneplus with optimized charging",
+		"category": "Mobile",
+		"isDiscountAvailable": true,
+		"discountPercentage": 10,
+		"dicountedPrice": 31500,
+		"deliveryCharge": 100,
+		"rating": 4.2,
+		"keyFeatures": [
+			"Dual Sim, 3G, 4G, VoLTE, Wi-Fi",
+			"Helio G35, Octa Core, 2.3GHz Processor",
+			"4GB RAM, 64GB inbuilt",
+			"5000mAh Battery",
+			"6.53 inches, 720x1600 px Display with Water Drop Notch",
+			"13MP + 2MP Dual Rear & 5MP Front Camera",
+			"Memory Card Supported, upto 512GB",
+			"Android v10"	
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			}
+		],
+		"isDealOfTheDay": false,
+		"imageUrl": "assets/Images/apple_mac.webp"
+	},
+	{
+		"productId": "P1008",
+		"productName": "Canon EOS 200D",
+		"manufacturer": "Canon",
+		"price": 60000,
+		"description": "A DSLR camera designed by Canon",
+		"category": "Camera",
+		"isDiscountAvailable": true,
+		"discountPercentage": 7,
+		"dicountedPrice": 55800,
+		"deliveryCharge": 100,
+		"rating": 4.7,
+		"keyFeatures":[
+			"Mode dial.",
+			"Dust reduction systems.",
+			"Interchangeable lenses.",
+			"HD video capture.",
+			"Live preview.",
+			"Sensor size and image quality.",
+			"Depth-of-field control.",
+			"Wider angle of view."
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			}
+		],
+		"isDealOfTheDay": true,
+		"imageUrl": "assets/Images/digital_camera.webp"
+	},
+	{
+		"productId": "P1009",
+		"productName": "LG 32-inch TV",
+		"manufacturer": "LG",
+		"price": 25000,
+		"description": "A 32 inch tv by LG",
+		"category": "TV",
+		"isDiscountAvailable": false,
+		"discountPercentage": 0,
+		"dicountedPrice": 25000,
+		"deliveryCharge": 100,
+		"rating": 4.7,
+		"keyFeatures":[
+			"User-Friendly Interface.",
+			"Video Streaming Services.",
+			"Streaming UHD Video in 4K.",
+			"Online music streaming.",
+			"Media Player.",
+			"A Universal Search Engine.",
+			"App Store."
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			},
+			{
+				"rating": 4.7,
+				"reviewComment": "Good product. Better to buy in a sale"
+			},
+			{
+				"rating": 5,
+				"reviewComment": "Buy it"
+			}
+		],
+		"isDealOfTheDay": true,
+		"imageUrl": "assets/Images/tv_1.webp"
+	},
+	{
+		"productId": "P1010",
+		"productName": "Dell Inspiron 15 3511",
+		"manufacturer": "Dell",
+		"price": 55000,
+		"description": "A Laptop designed by Dell",
+		"category": "Laptop",
+		"isDiscountAvailable": true,
+		"discountPercentage": 20,
+		"dicountedPrice": 44000,
+		"deliveryCharge": 100,
+		"rating": 4.5,
+		"keyFeatures":[
+			"1 Year Warranty",
+			"12.9 inches, 2732x2048 px Display",
+			"4 GB NVIDIA Graphics Card",
+			"Wider angle of view.",
+			"Streaming UHD Video in 4K."
+		],
+		"reviews": [
+			{
+				"rating": 5,
+				"reviewComment": "An excellent Product and smooth delivery experience"
+			},
+			{
+				"rating": 4.3,
+				"reviewComment": "Slightly Overpriced"
+			},
+			{
+				"rating": 4.5,
+				"reviewComment": "Value for money"
+			},
+			{
+				"rating": 4.7,
+				"reviewComment": "Good product. Better to buy in a sale"
+			},
+			{
+				"rating": 5,
+				"reviewComment": "Buy it"
+			}
+		],
+		"isDealOfTheDay": false,
+		"imageUrl": "assets/Images/laptop3.webp"
+	}
+])
